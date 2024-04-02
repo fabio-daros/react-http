@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import Usuarios from './components/Usuarios/Usuarios'
+import Users from './components/Users/Users'
 
 function App() {
   return (
     <div className="App">
       <main>
-        <Usuarios />
+        <Users />
       </main>
     </div>
   );

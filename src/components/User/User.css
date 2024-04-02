@@ -1,4 +1,4 @@
-.Usuario {
+.User {
   padding: 1.5rem;
   position: relative;
   margin: 1rem 0;
@@ -7,21 +7,21 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, .14);
 }
 
-.Usuario:hover {
+.User:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, .14);
 }
 
-.Usuario ul {
+.User ul {
   padding-left: 0;
   margin: 0;
   list-style: none;
 }
 
-.Usuario ul li strong {
+.User ul li strong {
   color: #DA3C78;
 }
 
-.Usuario button {
+.User button {
   top: 0.5rem;
   right: 0.5rem;
   border: none;
@@ -39,8 +39,8 @@
   padding: .2rem .35rem .35rem .35rem;
 }
 
-.Usuario button:hover,
-.Usuario button:focus {
+.User button:hover,
+.User button:focus {
   color: #FFF;
   background-color: #FF6CA8;
 }
