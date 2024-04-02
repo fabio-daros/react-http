@@ -26,7 +26,7 @@ class AddUser extends Component {
     const user = { ...this.state.user, id }
 
     this.setState({ user: { name: '', surname: '', email: '' } })
-    this.props.adicionarUser(user)
+    this.props.addUser(user)
   }
 
   render() {

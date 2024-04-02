@@ -14,15 +14,15 @@ class Users extends Component {
       ]
     }
 
-    this.adicionarUser = this.adicionarUser.bind(this)
+    this.addUser = this.addUser.bind(this)
   }
 
-  adicionarUser(user) {
+  addUser(user) {
     const users = [...this.state.users, user]
     this.setState({ users: users })
   }
 
-  removerUser(user) {
+  removeUser(user) {
     if (window.confirm(`Are you sure you want to remove "${user.name} ${user.surname}"?`)) {
       let users = this.state.users
       users = users.filter(x => x.id !== user.id)
@@ -33,12 +33,12 @@ class Users extends Component {
   render() {
     return (
       <>
-        <AddUser adicionarUser={this.adicionarUser} />
+        <AddUser addUser={this.addUser} />
 
         {this.state.users.map(user => (
           <User key={user.id}
             user={user}
-            removerUser={this.removerUser.bind(this, user)}
+            removeUser={this.removeUser.bind(this, user)}
           />
         ))}
       </>

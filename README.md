@@ -1,17 +1,23 @@
-# React com Http
+# React with Http
 
-Projeto em React com exemplo de requisições HTTP com Fecth API.
+Project in React with example of HTTP requests with Fecth API.
 
-## Instalar dependencias
+## Install dependencies
 
 ```sh
 npm install
 ```
 
-## Executar Aplicação
+## Run Application
 
 ```sh
 npm start
 ```
 
-Então abra [http://localhost:3000/](http://localhost:3000/) para ver a Aplicação.
+## If you're utilizing a node.js version significantly beyond the original release of this project, ensure validation by using:
+
+```sh
+npm audit fix --force
+```
+
+Then open [http://localhost:3000/](http://localhost:3000/) to see the Application.
