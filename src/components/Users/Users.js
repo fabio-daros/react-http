@@ -24,10 +24,39 @@ class Users extends Component {
 
   removeUser(user) {
     if (window.confirm(`Are you sure you want to remove "${user.name} ${user.surname}"?`)) {
-      let users = this.state.users
-      users = users.filter(x => x.id !== user.id)
-      this.setState({ users: users })
+
+      fetch(`https://reqres.in/api/users/${user.id}`, {
+        method: 'DELETE'
+      })
+        .then(response => {
+          if (response.ok) {
+            console.log(response)
+            let users = this.state.users.filter(u => u.id !== user.id)
+            this.setState({ users: users })
+          }
+        })
     }
+  }
+
+  componentDidMount() { // GET requisition using fetch.
+
+    fetch('https://reqres.in/api/users')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.data)
+
+        const users = data.data.map(user => ({
+          id: user.id,
+          name: user.first_name,
+          surname: user.last_name,
+          email: user.email
+        }))
+
+        console.log(users)
+        //this.setState({ users: users })
+        this.setState({ users }) // Simplify
+      })
+
   }
 
   render() {
