@@ -1,36 +1,17 @@
-import React, { Component } from 'react'
+import React, {useState } from 'react'
 
 import './AddUser.css'
 
-const INITIAL_STATE = {
-  name: '',
-  surname: '',
-  email: ''
-}
+function AddUser(props) {
 
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
+  const [email, setEmail] = useState('')
 
-class AddUser extends Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      user: { name: '', surname: '', email: '' }
-    }
-
-    this.onChangeHandler = this.onChangeHandler.bind(this)
-    this.onSubmitHandler = this.onSubmitHandler.bind(this)
-  }
-
-  onChangeHandler(event) {
-    const { name, value } = event.target
-    this.setState({ user: { ...this.state.user, [name]: value } })
-  }
-
-  onSubmitHandler(event) {
+  const onSubmitHandler = (event) => {
     event.preventDefault()
 
-    const user = this.state.user
+    const user = { name, surname, email }
 
     fetch('https://reqres.in/api/users', {
       method: 'POST',
@@ -39,57 +20,56 @@ class AddUser extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState(INITIAL_STATE)
-        this.props.addUser(user)
+        setName('')
+        setSurname('')
+        setEmail('')
+        props.addUser(data)
       })
   }
 
-  render() {
-    return (
-      <div className="AddUser">
-        <h2>Add User</h2>
-        <form onSubmit={this.onSubmitHandler}>
-          <div className="Linha">
-            <div className="Coluna">
-              <label>Name</label>
-              <input
-                type="text"
-                name="name"
-                value={this.state.user.name}
-                onChange={this.onChangeHandler}
-                required>
-              </input>
-            </div>
-            <div className="Coluna">
-              <label>Surname</label>
-              <input
-                type="text"
-                name="surname"
-                value={this.state.user.surname}
-                onChange={this.onChangeHandler}
-                required>
-              </input>
-            </div>
+  return (
+    <div className="AddUser">
+      <h2>Add User</h2>
+      <form onSubmit={onSubmitHandler}>
+        <div className="Linha">
+          <div className="Coluna">
+            <label>Name</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={event => setName(event.target.value)}
+              required>
+            </input>
           </div>
-          <div className="Linha">
-            <div className="Coluna">
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                value={this.state.user.email}
-                onChange={this.onChangeHandler}
-                required>
-              </input>
-            </div>
+          <div className="Coluna">
+            <label>Surname</label>
+            <input
+              type="text"
+              name="surname"
+              value={surname}
+              onChange={event => setSurname(event.target.value)}
+              required>
+            </input>
           </div>
-          <button type="submit">
-            Add
-          </button>
-        </form>
-      </div>
-    )
-  }
+        </div>
+        <div className="Linha">
+          <div className="Coluna">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={event => setEmail(event.target.value)}
+              required>
+            </input>
+          </div>
+        </div>
+        <button type="submit">
+          Add
+        </button>
+      </form>
+    </div>
+  )
 }
-
 export default AddUser
