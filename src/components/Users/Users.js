@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import AddUser from '../AddUser/AddUser'
 import User from '../User/User'
 
 function Users() {
@@ -27,9 +26,7 @@ function Users() {
 
   }, []) // Empty array to run only once time
 
-  const addUser = user => {
-    setUsers(actualUsers => [...actualUsers, user])
-  }
+ 
 
   const removeUser = user => {
     if (window.confirm(`Are you sure you want to remove "${user.name} ${user.surname}"?`)) {
@@ -47,8 +44,6 @@ function Users() {
 
   return (
     <>
-      <AddUser addUser={addUser} />
-
       {users.map(user => (
         <User key={user.id}
           user={user}

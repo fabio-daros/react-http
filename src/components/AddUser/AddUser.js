@@ -2,7 +2,7 @@ import React, {useState } from 'react'
 
 import './AddUser.css'
 
-function AddUser(props) {
+function AddUser() {
 
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
@@ -23,7 +23,6 @@ function AddUser(props) {
         setName('')
         setSurname('')
         setEmail('')
-        props.addUser(data)
       })
   }
 
@@ -31,8 +30,8 @@ function AddUser(props) {
     <div className="AddUser">
       <h2>Add User</h2>
       <form onSubmit={onSubmitHandler}>
-        <div className="Linha">
-          <div className="Coluna">
+        <div className="Line">
+          <div className="Column">
             <label>Name</label>
             <input
               type="text"
@@ -42,7 +41,7 @@ function AddUser(props) {
               required>
             </input>
           </div>
-          <div className="Coluna">
+          <div className="Column">
             <label>Surname</label>
             <input
               type="text"
@@ -53,8 +52,8 @@ function AddUser(props) {
             </input>
           </div>
         </div>
-        <div className="Linha">
-          <div className="Coluna">
+        <div className="Line">
+          <div className="Column">
             <label>Email</label>
             <input
               type="email"
