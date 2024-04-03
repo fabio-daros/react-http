@@ -1,45 +1,13 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import AddUser from '../AddUser/AddUser'
 import User from '../User/User'
 
-class Users extends Component {
+function Users() {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      users: [
-        { id: 1, name: 'João', surname: 'Silva', email: 'joao@mail.com' },
-        { id: 2, name: 'Maria', surname: 'Santos', email: 'maria@mail.com' }
-      ]
-    }
+  const [users, setUsers] = useState([])
 
-    this.addUser = this.addUser.bind(this)
-  }
-
-  addUser(user) {
-    const users = [...this.state.users, user]
-    this.setState({ users: users })
-  }
-
-  removeUser(user) {
-    if (window.confirm(`Are you sure you want to remove "${user.name} ${user.surname}"?`)) {
-
-      fetch(`https://reqres.in/api/users/${user.id}`, {
-        method: 'DELETE'
-      })
-        .then(response => {
-          if (response.ok) {
-            console.log(response)
-            let users = this.state.users.filter(u => u.id !== user.id)
-            this.setState({ users: users })
-          }
-        })
-    }
-  }
-
-  componentDidMount() { // GET requisition using fetch.
-
+  useEffect(() => {
     fetch('https://reqres.in/api/users')
       .then(response => response.json())
       .then(data => {
@@ -54,25 +22,41 @@ class Users extends Component {
 
         console.log(users)
         //this.setState({ users: users })
-        this.setState({ users }) // Simplify
+        setUsers(users) // Simplify
       })
 
+  }, []) // Empty array to run only once time
+
+  const addUser = user => {
+    setUsers(actualUsers => [...actualUsers, user])
   }
 
-  render() {
-    return (
-      <>
-        <AddUser addUser={this.addUser} />
+  const removeUser = user => {
+    if (window.confirm(`Are you sure you want to remove "${user.name} ${user.surname}"?`)) {
 
-        {this.state.users.map(user => (
-          <User key={user.id}
-            user={user}
-            removeUser={this.removeUser.bind(this, user)}
-          />
-        ))}
-      </>
-    )
+      fetch(`https://reqres.in/api/users/${user.id}`, {
+        method: 'DELETE'
+      })
+        .then(response => {
+          if (response.ok) {
+            setUsers(users.filter(u => u.id !== user.id))
+          }
+        })
+    }
   }
+
+  return (
+    <>
+      <AddUser addUser={addUser} />
+
+      {users.map(user => (
+        <User key={user.id}
+          user={user}
+          removeUser={() => removeUser(user)}
+        />
+      ))}
+    </>
+  )
 }
 
 export default Users
