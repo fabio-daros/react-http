@@ -2,13 +2,16 @@
   font-size: 1.25rem;
   text-transform: uppercase;
   color: #CA2C68;
-  margin: 9rem auto;
+  margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: wave 2s infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .Home h1 {

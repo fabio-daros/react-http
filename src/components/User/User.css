@@ -1,10 +1,12 @@
 .User {
   padding: 1.5rem;
   position: relative;
-  margin: 1rem 0;
+  margin-top: 5rem;
+  margin-bottom: -4rem;
   border-radius: .25rem;
   background-color: #FFF;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .14);
+  margin-left: 20rem;
 }
 
 .User:hover {

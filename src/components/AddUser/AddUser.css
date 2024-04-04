@@ -1,9 +1,11 @@
 .AddUser {
-  margin: 2rem 0;
-  padding: 1.25rem;
-  background-color: #FFF;
+  padding: 1.5rem;
+  margin-top: 5rem;
+  margin-bottom: -4rem;
+  border-radius: .25rem;
   background-color: #FFEBF3;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .14);
+  margin-left: 20rem;
 }
 
 .AddUser h2 {
