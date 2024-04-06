@@ -18,11 +18,13 @@ function AddUser() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
     })
-      .then(response => response.json())
-      .then(data => {
+      .then(response => {
+        if (response.ok) {
         setName('')
         setSurname('')
         setEmail('')
+        alert('User added successfully!')
+        }
       })
   }
 
@@ -65,7 +67,7 @@ function AddUser() {
           </div>
         </div>
         <button type="submit">
-          Add
+          Add+
         </button>
       </form>
     </div>

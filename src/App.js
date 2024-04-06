@@ -5,6 +5,7 @@ import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom'
 import Users from './components/Users/Users'
 import AddUser from './components/AddUser/AddUser';
 import Home from './components/Home/Home';
+import UsersDetails from './components/UsersDetails/UsersDetails';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/users/:id" element={<UsersDetails />}></Route>
             <Route path="/users" element={<Users />}></Route>
             <Route path="/add" element={<AddUser />}></Route>
             <Route path="*" element={<PageNotFound />}></Route>

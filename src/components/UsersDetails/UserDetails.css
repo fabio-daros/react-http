@@ -1,0 +1,15 @@
+.UserDetails {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #CA2C68;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
